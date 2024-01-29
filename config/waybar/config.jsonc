@@ -1,0 +1,103 @@
+{
+	"layer": "top",
+	"modules-left": ["custom/launcher", "cpu", "memory", "mpris"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["tray", "custom/updates", "custom/wallpaper", "backlight", "pulseaudio", "clock", "battery", "custom/power"],
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": "󰖁 {volume}%",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+    "hyprland/workspaces": {
+	"all-outputs": true,
+	"on-click": "activate",
+	"on-scroll-up": "hyprctl dispatch workspace e+1",
+	"on-scroll-down": "hyprctl dispatch workspace e-1"
+	},
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		"format-ethernet": ""
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+    "clock": {
+        "format": "{: %a, %d/%m/%Y, %H:%M}"
+    },
+    "cpu": {
+        "interval": 15,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "mpris": {
+    	"format": "{player_icon} {status_icon} {title} - {artist}",
+	"max-length": 70,
+	"player-icons": {
+		"default": "",
+		"firefox": "󰈹",
+		"mpv": "",
+		"spotify": "",
+		"vlc": "󰕼"
+	},
+	"status-icons": {
+		"playing": "",
+		"paused": "",
+		"stopped": ""
+	}
+    },
+    "custom/launcher": {
+        "format": " ",
+	"tooltip": false,
+        "on-click": "rofi -show drun -I -G",
+        "on-click-right": "rofi -show run -I -G"
+    },
+    "custom/power":{
+        "format": " ",
+	"tooltip": false
+    },
+    "custom/updates":{
+        "format": "{}  ",
+	"tooltip": "{} Package(s) to update)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "hyprctl dispatch \"exec [float] kitty -e paru -Syu --noconfirm ; paru -Rcns $(paru -Qtdq) --noconfirm ; notify-send 'The system has been updated'\""
+    },
+    "custom/wallpaper":{
+        "format":" ",
+	"tooltip": false,
+        "on-click": "bash ~/scripts/wallpaper_select.sh"
+    }
+}
