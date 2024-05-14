@@ -1,0 +1,22 @@
+[Added Associations]
+image/png=swayimg.desktop;oculante.desktop;
+application/x-msdownload=wine.desktop;xarchiver.desktop;
+inode/symlink=thunar.desktop;
+video/mp4=org.bunkus.mkvtoolnix-gui.desktop;vlc.desktop;
+video/x-matroska=vlc.desktop;org.bunkus.mkvtoolnix-gui.desktop;
+application/x-bittorrent=transmission-gtk.desktop;
+application/pdf=firefox.desktop;
+application/vnd.microsoft.portable-executable=wine.desktop;
+text/plain=userapp-kitty -e 'nvim %F'-TZAAN2.desktop;userapp-kitty -e nvim %F-HWTFN2.desktop;
+
+[Default Applications]
+application/x-msdownload=xarchiver.desktop
+inode/symlink=thunar.desktop
+video/mp4=vlc.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
+image/png=oculante.desktop
+text/plain=userapp-kitty -e nvim %F-HWTFN2.desktop
